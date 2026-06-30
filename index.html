@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamer Assem Abd El Mageid | CTO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: 30px 40px;
+            display: flex;
+            gap: 30px;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #cccccc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #0055ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 85, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            text-align: left;
+            max-width: 700px;
+            padding: 40px;
+            border-left: 3px solid #0055ff;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0055ff;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 25px;
+        }
+
+        .tagline {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            line-height: 1.8;
+            color: #cccccc;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .cta-button {
+            padding: 15px 30px;
+            background-color: transparent;
+            color: #ffffff;
+            border: 1px solid #0055ff;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 2px;
+        }
+
+        .cta-button:hover {
+            background-color: #0055ff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 85, 255, 0.2);
+        }
+
+        .cta-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #0a0a0a, 0 0 0 4px #0055ff;
+        }
+
+        .cta-button.secondary {
+            border-color: #444444;
+            color: #cccccc;
+        }
+
+        .cta-button.secondary:hover {
+            background-color: #444444;
+            color: #ffffff;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .social-links a {
+            color: #666666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #0055ff;
+        }
+
+        /* Portfolio Section */
+        #portfolio {
+            padding: 100px 40px;
+            background-color: #0f0f0f;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 60px;
+            border-left: 3px solid #0055ff;
+            padding-left: 20px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+        }
+
+        .portfolio-item {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        .portfolio-item:hover {
+            border-color: #0055ff;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 85, 255, 0.1);
+        }
+
+        .portfolio-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .portfolio-item p {
+            color: #999999;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #0055ff;
+            color: #ffffff;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: 20px;
+        }
+
+        /* About Section */
+        #about {
+            padding: 100px 40px;
+            background-color: #0a0a0a;
+        }
+
+        .about-content {
+            max-width: 800px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #cccccc;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill {
+            background-color: #1a1a1a;
+            padding: 8px 16px;
+            border: 1px solid #333333;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #0055ff;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #1a1a1a;
+            color: #666666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                position: relative;
+                padding: 20px;
+                justify-content: center;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-top: 100px;
+            }
+
+            .hero-container {
+                padding: 30px 20px;
+                border-left: 2px solid #0055ff;
+            }
+
+            h1 {
+                margin-bottom: 10px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .cta-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            #portfolio,
+            #about {
+                padding: 60px 20px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 40px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1rem;
+            }
+
+            .tagline {
+                font-size: 0.95rem;
+            }
+
+            .social-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Tamer Assem<br>Abd El Mageid</h1>
+            <h2>Chief Technology Officer</h2>
+            <p class="tagline">Bridging the gap between complex digital infrastructure and premium brand experiences. Specializing in generative AI, scalable architecture, and strategic digital transformation.</p>
+            
+            <div class="cta-group">
+                <a href="#contact" class="cta-button">Get In Touch</a>
+                <a href="#portfolio" class="cta-button secondary">View Work</a>
+            </div>
+
+            <div class="social-links">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2 class="section-title">Featured Work</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <h3>AI-Powered Infrastructure</h3>
+                <p>Built scalable ML infrastructure serving millions of requests with sub-100ms latency.</p>
+                <div class="portfolio-tags">
+                    <span class="tag">AI/ML</span>
+                    <span class="tag">Cloud</span>
+                    <span class="tag">Python</span>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <h3>Digital Transformation</h3>
+                <p>Led strategic transformation initiatives for Fortune 500 companies, increasing efficiency by 40%.</p>
+                <div class="portfolio-tags">
+                    <span class="tag">Strategy</span>
+                    <span class="tag">Leadership</span>
+                    <span class="tag">DevOps</span>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <h3>Full-Stack Platform</h3>
+                <p>Architected and deployed a complete platform serving 1M+ active users globally.</p>
+                <div class="portfolio-tags">
+                    <span class="tag">Architecture</span>
+                    <span class="tag">Full-Stack</span>
+                    <span class="tag">Scale</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Expertise</h3>
+                <p>With over a decade of experience in technology leadership, I've built and scaled teams, architected complex systems, and driven innovation across multiple industries.</p>
+                <p>I'm passionate about leveraging cutting-edge technologies like generative AI, cloud architecture, and modern DevOps practices to solve real business problems.</p>
+            </div>
+            <div class="about-text">
+                <h3>Core Skills</h3>
+                <div class="skills">
+                    <span class="skill">AI/ML</span>
+                    <span class="skill">Architecture</span>
+                    <span class="skill">Cloud</span>
+                    <span class="skill">DevOps</span>
+                    <span class="skill">Leadership</span>
+                    <span class="skill">Python</span>
+                    <span class="skill">TypeScript</span>
+                    <span class="skill">Kubernetes</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="padding: 100px 40px; text-align: center; background-color: #0f0f0f; border-top: 1px solid #1a1a1a;">
+        <h2 class="section-title" style="border: none; text-align: center;">Let's Connect</h2>
+        <p style="color: #cccccc; font-size: 1.1rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">Have a project in mind or want to discuss how we can work together?</p>
+        <a href="mailto:your-email@example.com" class="cta-button">Send Email</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Tamer Assem Abd El Mageid. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

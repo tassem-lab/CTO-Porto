@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tassem-lab.github.io/CTO-Porto/sitemap.xml
